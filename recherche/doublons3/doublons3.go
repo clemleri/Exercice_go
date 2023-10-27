@@ -15,7 +15,21 @@ entiers de 1 à len(tab)/k et false sinon
 */
 
 func doublons(tab []int, k int) (ok bool) {
-	for i:=0;i<lenb(tab);i++ {
-		
+	if len(tab) == 0{
+		return true
 	}
+	for i:=0;i<len(tab)/k;i++ {
+		cpt:=0
+		for j:=0; j<len(tab); j++{
+			if i==tab[j] {
+				cpt++
+			}else if tab[j]>len(tab)/k{
+				return false
+			}
+		}
+		if cpt>k{
+			return false
+		}
+	}
+	return true
 }
