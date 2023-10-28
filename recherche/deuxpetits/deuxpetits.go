@@ -15,5 +15,19 @@ La fonction lesDeuxPlusPetits retourne les deux plus petits entiers présents da
 */
 
 func lesDeuxPlusPetits(t []int) (v1, v2 int) {
-	return
+	if len(t)==2 {
+		if t[0]>=t[1] {
+			return t[1], t[0]
+		}else {
+			return t[0], t[1]
+		}
+	}else {
+		v1 = t[0]
+		for i:=0; i<len(t); i++ {
+			if v1>=t[i]{
+				v1, v2 = t[i], v1
+			}
+		}
+	}
+	return v1, v2
 }

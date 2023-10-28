@@ -1,7 +1,6 @@
 package doublons4
 
 import "fmt"
-
 /*
 On dispose d'un tableau d'entiers de longueur n et on suppose qu'il contient
 exactement k fois chaque nombre compris entre 1 et n/k. On voudrait vérifier
@@ -18,28 +17,28 @@ entiers de 1 à len(tab)/k
 */
 
 func doublons(tab []int) (k int, ok bool) {
-	if len(tab) == 0{
+	if len(tab) <= 1{
 		return k, true
 	}
 	for y:=0; y<len(tab);y++ {
 		if tab[0]==tab[y] {
 			k++
 		}
+		if tab[y] < 1 {
+			fmt.Println("condition validée")
+			return k, false
+		}
 	}
-	fmt.Println(k)
-	for i:=0;i<len(tab)/k;i++ {
+	for i:=1;i<len(tab)/k;i++ {
 		cpt:=0
 		for j:=0; j<len(tab); j++{
 			if i==tab[j] {
-				fmt.Println("i est bien égale tab[j]")
 				cpt++
 			}
 		}
 		if cpt!=k{
-			fmt.Println("cpt: ",cpt)
 			return k, false
 		}
 	}
-	fmt.Println("k return: ",k )
 	return k, true
 }

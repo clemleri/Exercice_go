@@ -15,5 +15,24 @@ La fonction lesDeuxPlusGrands retourne les deux plus grands entiers présents da
 */
 
 func lesDeuxPlusGrands(t []int) (v1, v2 int) {
-	return
+	if len(t)==2 {
+		if t[0]<=t[1] {
+			return t[1], t[0]
+		}else {
+			return t[0], t[1]
+		}
+	}else {
+		indice_max := 0
+		for i:=0; i<len(t); i++ {
+			if v1<=t[i]{
+				v1, v2 = t[i], v1
+				indice_max = i
+			}
+			if v2<t[i] && indice_max!=i{
+				v2 = t[i]
+			}
+		}
+	}
+	return v1, v2
 }
+
