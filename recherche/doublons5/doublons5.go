@@ -14,5 +14,12 @@ false sinon
 */
 
 func doublons(tab []int) (ok bool) {
-	return ok
+	for i:=0; i<len(tab);i++ {
+		for j:=0;j<len(tab); j++{
+			if tab[i]==tab[j] && i!=j {
+				return false
+			}
+		}
+	}
+	return true
 }

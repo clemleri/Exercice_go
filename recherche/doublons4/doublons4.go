@@ -25,7 +25,7 @@ func doublons(tab []int) (k int, ok bool) {
 			k++
 		}
 		if tab[y] < 1 {
-			fmt.Println("condition validée")
+			fmt.Println("condition validé e")
 			return k, false
 		}
 	}
