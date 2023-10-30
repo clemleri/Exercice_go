@@ -1,7 +1,8 @@
 package plusQueZero
 
 /*
-La fonction tousPositifs indique si tous les nombres contenus dans un tableau sont strictement supérieurs à 0
+La fonction tousPositifs indique si tous les nombres contenus 
+dans un tableau sont strictement supérieurs à 0
 
 # Entrée
 - t : un tableau d'entiers
@@ -14,5 +15,10 @@ La fonction tousPositifs indique si tous les nombres contenus dans un tableau so
 */
 
 func tousPositifs(t []int) (reponse bool) {
-	return
+	for i:=0;i<len(t);i++ {
+		if t[i]<=0 {
+			return false
+		}
+	}
+	return true
 }

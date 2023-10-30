@@ -1,7 +1,8 @@
 package prefixes
 
 /*
-La fonction numPrefixes doit compter le nombre de chaînes de caractères dans un
+La fonction numPrefixes doit compter le nombre de 
+chaînes de caractères dans un
 tableau qui commencent par une chaîne donnée.
 
 # Entrées
@@ -15,5 +16,12 @@ tableau qui commencent par une chaîne donnée.
 numPrefixes([]string{"bonjour", "bonsoir", "salut", "bye bye"}, "bon") = 2
 */
 func numPrefixes(t []string, s string) (n int) {
+	for i:=0; i<len(t); i++ {
+		if len(t[i])<len(s){
+			continue
+		}else if t[i][:len(s)] == s {
+			n++
+		}
+	}
 	return n
 }
