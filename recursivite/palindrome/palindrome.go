@@ -15,5 +15,15 @@ estPalindrome("kayak") = true
 */
 
 func estPalindrome(s string) (b bool) {
-	return b
+	if len(s) <=1 {
+		return true 
+	}else {
+		if s[0]==s[len(s)-1] {
+			s = s[:1]
+			s = s[1:]
+			return estPalindrome(s)
+		}else {
+			return false
+		}
+	}
 }
