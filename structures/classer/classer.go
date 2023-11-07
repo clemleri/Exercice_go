@@ -25,5 +25,27 @@ type etudiant struct {
 }
 
 func classer(promo []etudiant) (classement []etudiant) {
+	var n int = len(promo)
+	var max int 
+	for i:=0; i<n-1; i++ {
+		max = i
+		for j:=i+1; j<n; j++ {
+			if promo[j].moyenne >promo[max].moyenne {
+				max = j
+			}else if promo[j].moyenne == promo[max].moyenne {
+				if promo[j].nom == promo[max].nom {
+					if promo[j].prenom < promo[max].prenom {
+						max = j
+					}
+				}else if promo[j].nom < promo[max].nom{
+					max = j
+				}
+			}
+		if max != i{
+			promo[i], promo[max] = promo[max], promo[i]
+		}
+		}	
+	}
+	copy(classement, promo)
 	return classement
 }
