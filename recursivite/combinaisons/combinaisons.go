@@ -1,7 +1,8 @@
 package combinaison
 
 /*
-Étant donné un entier n, on souhaite trouver toutes les combinaisons d'entiers (c'est-à-dire des ensemble avec répétitions) compris entre 1 et n (inclus) dont la somme vaut n. Ainsi, par exemple, pour n = 3 on doit trouver les combinaisons {1, 1, 1}, {1, 2} et {3}.
+Étant donné un entier n, on souhaite trouver toutes les combinaisons d'entiers (c'est-à-dire des ensemble avec répétitions) 
+compris entre 1 et n (inclus) dont la somme vaut n. Ainsi, par exemple, pour n = 3 on doit trouver les combinaisons {1, 1, 1}, {1, 2} et {3}.
 
 Il est possible d'écrire pour calculer les combinaisons pour un entier n une fonction récursive sur un principe proche du suivant :
 * Pour chaque i entre 1 et n
@@ -24,5 +25,28 @@ Le plus simple est d'écrire une fonction récursive, mais les boucles for sont 
 */
 
 func combinaisons(n int) (res [][]int) {
+	if n <= 0 {
+		return res
+	}
+
+	var findCombinationsHelper func(int, []int, int)
+	findCombinationsHelper = func(n int, currentCombination []int, start int) {
+		if n == 0 {
+			temp := make([]int, len(currentCombination))
+			copy(temp, currentCombination)
+			res = append(res, temp)
+			return
+		}
+		for i := start; i <= n; i++ {
+			currentCombination = append(currentCombination, i)
+			findCombinationsHelper(n-i, currentCombination, i)
+			currentCombination = currentCombination[:len(currentCombination)-1]
+		}
+	}
+
+	findCombinationsHelper(n, []int{}, 1)
 	return res
 }
+
+
+

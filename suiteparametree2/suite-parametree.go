@@ -16,5 +16,12 @@ Pour cet exercice, les boucles for sont interdites.
 */
 
 func termeparam(n int) (un int) {
-	return
+	return terme(n,n)
+}
+
+func terme(n int, u0 int) (un int) {
+	if n == 0 {
+		return u0
+	}
+	return 2*terme(n-1,u0) + u0
 }
