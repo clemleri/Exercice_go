@@ -26,18 +26,15 @@ compter(2, 5) = "2+3+4+5+4+3+2"
 func compter(n, m uint) (s string) {
 	if n > m {
 		return ""
-	}else if n == m{
-		if n+2>0 {
-			return s+s[n+2]+compter(n-,m)
-			
-		}else {
-			return <
-		}
 	}else {
-		if len(s)==0 {
-			return string(n)
-		}else {
-			return string(n)+"+"+compter(n+1)
-		}
+		return compter_string(n, m) + compter_string(m ,n)
+	}
+}
+
+func compter_string(n, m uint) (s string) {
+	if len(s)==0 {
+		return string(n)
+	}else {
+		return string(n)+"+"+compter_string(n+1, m)
 	}
 }
