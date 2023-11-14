@@ -22,5 +22,5 @@ type livre struct {
 }
 
 func obtenirTitre(l livre) (titre string) {
-	return
+	return l.titre
 }

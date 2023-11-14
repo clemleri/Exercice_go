@@ -1,5 +1,6 @@
 package classer
 
+
 /*
 La fonction classer doit trier un tableau d'étudiants (tels que définis) ci-dessous
 de celui qui a la meilleur moyenne (la plus élevée) à celui qui a la plus mauvaise
@@ -41,11 +42,11 @@ func classer(promo []etudiant) (classement []etudiant) {
 					max = j
 				}
 			}
+		}
 		if max != i{
 			promo[i], promo[max] = promo[max], promo[i]
 		}
-		}	
 	}
-	copy(classement, promo)
+	classement = promo
 	return classement
 }
