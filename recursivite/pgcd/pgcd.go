@@ -23,8 +23,6 @@ func pgcd(a, b uint) (c uint) {
 	if a< b{
 		return pgcd(a, b-a)
 	}
-	
-	
 	return a
 	
 }

@@ -16,5 +16,18 @@ Vous ne devez pas utiliser de boucles for dans cet exercice.
 */
 
 func pairs(t []int) (num int) {
-	return num
+	if len(t) == 0 {
+		return 0
+	}else if len(t) ==1 {
+		if t[0]%2==0 {
+			return 1
+		}else {
+			return 0
+		}
+	}else {
+		mid_liste := len(t)/2
+		liste_gauche := pairs(t[:mid_liste])
+		liste_droite := pairs(t[mid_liste:])
+		return  liste_gauche + liste_droite
+	}
 }
