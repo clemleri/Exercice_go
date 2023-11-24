@@ -1,7 +1,10 @@
 package doublons7
 
+
 /*
-On dispose d'un tableau d'entiers de longueur n et on suppose qu'il contient exactement les nombres de k à k + n - 1 (pas forcément dans l'ordre) pour un certain k non connu à l'avance. On voudrait vérifier que c'est bien le cas. C'est le travail de la fonction doublons.
+On dispose d'un tableau d'entiers de longueur n et on suppose qu'il contient exactement les 
+nombres de k à k + n - 1 (pas forcément dans l'ordre) pour un certain k non connu à l'avance. On voudrait vérifier que 
+c'est bien le cas. C'est le travail de la fonction doublons.
 
 # Entrée
 - tab : un tableau d'entiers
@@ -14,5 +17,23 @@ On dispose d'un tableau d'entiers de longueur n et on suppose qu'il contient exa
 */
 
 func doublons(tab []int) (ok bool) {
-	return
+	var min int 
+	for i:=0; i<len(tab); i++ {
+		min = i
+		for j:=i; j<len(tab); j++ {
+			if tab[min] > tab[j] {
+				min = j
+			}
+		} 
+		if min != i {
+			tab[min], tab[i] = tab[i], tab[min]
+		}
+	}
+
+	for y:=0; y<len(tab)-1; y++ {
+		if tab[y]+1 != tab[y+1] {
+			return false
+		}
+	}
+	return true
 }
