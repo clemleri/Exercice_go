@@ -31,11 +31,15 @@ type element struct {
 }
 
 func (l liste) contient(v int) (existe bool) {
-	if l.debut.valeur == v{
-		return true
-	}else if l.debut.suivant == nil{
-		return false
-	}else {
-		return l.debut.suivant.contient(v)
-	}
+	return l.contient_auxi(l.debut, v)
 }
+
+func (l liste) contient_auxi(e *element, v int) (existe bool) {
+	if e == nil {
+		return false
+	}else if e.valeur == v{
+		return true
+	}else{
+		return l.contient_auxi(e.suivant, v)
+	}
+} 

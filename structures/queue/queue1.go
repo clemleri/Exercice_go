@@ -1,7 +1,8 @@
 package queue
 
 /*
-On considère la structure de file d'attente (queue) définie ci-dessous. Une queue contient un certain nombre de places (sa taille) et est définie par la dernière place dans cette queue.
+On considère la structure de file d'attente (queue) définie ci-dessous. Une queue contient un certain nombre de places (sa taille) et est définie par la dernière 
+place dans cette queue.
 Chaque place est occupée par une personne et est reliée à la place précédente dans la queue.
 Ainsi, de place en place, on peut reconstituer toute la queue.
 Quand une nouvelle personne s'ajoute à la queue, elle prend une nouvelle place à la fin de celle-ci.
@@ -32,7 +33,17 @@ type personne struct {
 }
 
 func (q *queue) ajout(p personne) {
-	pl := place{occupant : p, precedant : q.fin }
-	q.fin = pl
-	q.taille ++
+	nouvelle_place := &place{
+		occupant : p,
+		precedant : nil,
+	}
+
+	if q.taille == 0{
+		q.fin = nouvelle_place
+	}else {
+		place_precedante := q.fin
+		nouvelle_place.precedant = place_precedante
+		q.fin = nouvelle_place
+	}
+	q.taille++
 }
