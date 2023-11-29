@@ -29,5 +29,5 @@ func trouver(tab []livre, numPages int) (l livre, trouve bool) {
 			return tab[i], true
 		}
 	}
-	return livre{}, false
+	return l, false
 }

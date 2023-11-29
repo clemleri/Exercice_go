@@ -13,17 +13,10 @@ ordre croissant et false s'ils ne sont pas bien triés.
 */
 
 func bienrange(tab []int) (estrange bool) {
-	estrange = true
-	if len(tab) >1{
-		var tab_verif []int = make([]int, 0, len(tab))
-		for i:=1; i<len(tab);i++ {
-			tab_verif = tab[i:]
-			for y:=0; y<len(tab_verif); y++ {
-				if tab[i-1] > tab_verif[y]{
-					estrange = false
-				}
-			}
+	for i:=0; i<len(tab)-1; i++ {
+		if tab[i] > tab[i+1] {
+			return false
 		}
 	}
-	return estrange
+	return true
 }

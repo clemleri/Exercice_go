@@ -11,19 +11,21 @@ La fonction decroissant doit trier un tableau d'entiers dans l'ordre décroissan
 */
 
 func decroissant(tab []int) {
-	if len(tab) > 1{
-		var n int = len(tab)
-		var max int 
-		for i:=0; i<n-1; i++ {
-			max = i
-			for j:=i+1; j<n; j++ {
-				if tab[j] >tab[max] {
-					max = j
-				}
-			}
-			if max != i{
-				tab[i], tab[max] = tab[max], tab[i]
+	var max int
+	for i:=0; i<len(tab)-1; i++{
+		max = i
+		for j:=i; j<len(tab); j++ {
+			if estPlusGrandque(tab[j], tab[max]) {
+				max = j
 			}
 		}
+		if i!=max {
+			tab[i], tab[max] = tab[max], tab[i]
+		}
+		
 	}
+}
+
+func estPlusGrandque(v1, v2 int) (estplusgrand bool) {
+	return v1 > v2
 }
