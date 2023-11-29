@@ -33,7 +33,7 @@ type personne struct {
 }
 
 func (q *queue) ajout(p personne) {
-	nouvelle_place := &place{
+	nouvelle_place := &place{ 
 		occupant : p,
 		precedant : nil,
 	}

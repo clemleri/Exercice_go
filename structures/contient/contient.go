@@ -27,7 +27,7 @@ type liste struct {
 
 type element struct {
 	valeur  int
-	suivant *element
+	suivant *element 
 }
 
 func (l liste) contient(v int) (existe bool) {

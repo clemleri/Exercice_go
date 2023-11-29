@@ -47,3 +47,4 @@ func (q *queue) premier() (p personne) {
 	}
 	return p
 }
+ 
