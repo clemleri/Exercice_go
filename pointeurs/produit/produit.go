@@ -12,4 +12,5 @@ On considère un ensemble d'adresses d'entiers (des pointeurs) stockées dans un
 */
 
 func produit(t []*int, res *int) {
+	
 }

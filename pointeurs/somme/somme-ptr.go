@@ -11,4 +11,9 @@ On considère un ensemble d'adresses d'entiers (des pointeurs) stockées dans un
 2022-2023, test 2, exercice 2
 */
 
-func somme(t []*int, res *int) {}
+func somme(t []*int, res *int) {
+	*res = 0
+	for i:=0; i<len(t); i++ {
+		*res = *res+*t[i]
+	}
+}
