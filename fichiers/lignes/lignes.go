@@ -1,5 +1,10 @@
 package lignes
 
+import (
+	"bufio"
+	"os"
+)
+
 /*
 La fonction lignes doit compter le nombre de lignes dans un fichier dont le nom
 est indiqué en paramètre.
@@ -12,5 +17,15 @@ est indiqué en paramètre.
 */
 
 func lignes(fName string) (nLignes int) {
-	return nLignes
+	file, err := os.Open(fName)
+	if err != nil {
+		return -1
+	}
+	var result int
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+		result++
+	}
+	return result
 }

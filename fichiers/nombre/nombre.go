@@ -1,5 +1,10 @@
 package nombre
 
+import (
+	"bufio"
+	"os"
+)
+
 /*
 La fonction nombre doit dire si le fichier dont le chemin est donné en paramètre
 contient ou ne contient pas le chiffre 1. On suppose que le fichier en question
@@ -19,5 +24,15 @@ fichier).
 */
 
 func nombre(chemin string) (contient bool) {
-	return contient
+	file, _ := os.Open(chemin)
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		for i := 0; i < len(line); i++ {
+			if string(line[i]) == "1" {
+				return true
+			}
+		}
+	}
+	return false
 }

@@ -1,5 +1,10 @@
 package acrostiche
 
+import (
+	"bufio"
+	"os"
+)
+
 /*
 La fonction acrostiche doit reconstituer le mot formé par le premier caractère
 de chaque ligne d'un fichier, en ignorant les lignes vides.
@@ -15,6 +20,19 @@ de chaque ligne d'un fichier, en ignorant les lignes vides.
 */
 
 func acrostiche(fName string) (mot string) {
-	return mot
-        
+	file, err := os.Open(fName)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	var result string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if len(line) > 0 {
+			result = result + string(line[0])
+		}
+	}
+	return result
 }

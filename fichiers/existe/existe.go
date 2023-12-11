@@ -1,5 +1,7 @@
 package existe
 
+import "os"
+
 /*
 La fonction existe doit dire si un fichier dont le nom est donné en paramètre
 existe ou pas.
@@ -12,5 +14,9 @@ existe ou pas.
 */
 
 func existe(fName string) (ok bool) {
-	return ok
+	_, err := os.Open(fName)
+	if err != nil {
+		return false
+	}
+	return true
 }
