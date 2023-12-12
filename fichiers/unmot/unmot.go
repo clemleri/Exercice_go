@@ -29,9 +29,17 @@ var errImpossible error = errors.New("Le fichier n'existe pas ou il ne contient 
 func premiermot(fName string) (mot string, err error) {
 	file, err := os.Open(fName)
 	if err != nil {
-		return mot, err
+		return mot, errImpossible
 	}
 	scanner := bufio.NewScanner(file)
-	line := scanner.Text()
-	return string(line), err
+	for scanner.Scan() {
+		line := scanner.Text()
+		if len(line) == 0 {
+			continue
+		} else {
+			mot = string(line)
+			return mot, err
+		}
+	}
+	return mot, errImpossible
 }

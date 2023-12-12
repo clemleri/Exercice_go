@@ -1,7 +1,8 @@
 package produit
 
 /*
-On considère un ensemble d'adresses d'entiers (des pointeurs) stockées dans un tableau. On veut calculer le produit des entiers stockés à ces adresses et le stocker à une autre adresse donnée en paramètre.
+On considère un ensemble d'adresses d'entiers (des pointeurs) stockées dans un tableau.
+On veut calculer le produit des entiers stockés à ces adresses et le stocker à une autre adresse donnée en paramètre.
 
 # Entrées
 - t, un tableau de pointeurs vers des entiers
@@ -12,5 +13,8 @@ On considère un ensemble d'adresses d'entiers (des pointeurs) stockées dans un
 */
 
 func produit(t []*int, res *int) {
-	
+	*res = 1
+	for i := 0; i < len(t); i++ {
+		*res = *res * *t[i]
+	}
 }

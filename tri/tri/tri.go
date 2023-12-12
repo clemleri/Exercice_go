@@ -16,23 +16,18 @@ Cette fonction ne doit pas modifier le tableau donné en entrée.
 */
 
 func tri(tinit []int) (tfin []int) {
-	for i:=0; i<len(tinit); i++{
-		tfin = append(tfin,tinit[i])
-	}
-	if len(tfin)>1{
-		var n int = len(tfin)
-		var min int 
-		for i:=0;i<n-1; i++ {
-			min = i
-			for j:=i+1; j<n; j++ {
-				if tfin[min]>tfin[j] {
-					min = j
-				}
-			}
-			if min != i{
-				tfin[min],tfin[i] = tfin[i], tfin[min]
+	var t_trie []int = make([]int, len(tinit), len(tinit))
+	copy(t_trie, tinit)
+	for i := 0; i < len(t_trie)-1; i++ {
+		min := i
+		for j := i; j < len(t_trie); j++ {
+			if t_trie[j] < t_trie[min] {
+				min = j
 			}
 		}
+		if i != min {
+			t_trie[i], t_trie[min] = t_trie[min], t_trie[i]
+		}
 	}
-	return tfin
+	return t_trie
 }

@@ -23,5 +23,10 @@ ci-dessous.
 var errImpossibleAssignment error = errors.New("Impossible assignment")
 
 func double(x *int, y **int) (err error) {
-	return err
+	if y == nil {
+		return errImpossibleAssignment
+	} else {
+		*y = x
+	}
+	return
 }
